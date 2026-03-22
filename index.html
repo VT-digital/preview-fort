@@ -179,9 +179,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 md:h-20">
             <a href="#hero" class="flex items-center gap-3 shrink-0 group">
-                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" :class="scrolled ? 'bg-brand-blue shadow-lg shadow-blue-200' : 'bg-white/15 backdrop-blur-sm border border-white/20'">
-                    <svg class="w-6 h-6 md:w-7 md:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
+                <img src="assets/fort-logo.jpg" alt="Fořt logo" class="w-10 h-10 md:w-12 md:h-12 rounded-xl object-contain transition-all duration-300 group-hover:scale-110" :class="scrolled ? 'shadow-lg shadow-blue-200 bg-white' : 'bg-white/90'">
                 <div>
                     <div class="text-lg md:text-xl font-extrabold tracking-tight transition-colors" :class="scrolled ? '' : 'text-white'"><span :class="scrolled ? 'text-brand-blue' : 'text-white'">AUTOSERVIS</span><span class="text-brand-red ml-1">FOŘT</span></div>
                     <div class="text-[10px] md:text-xs font-medium tracking-widest uppercase -mt-0.5 transition-colors" :class="scrolled ? 'text-gray-400' : 'text-white/60'">Litvínov-Janov</div>
@@ -241,13 +239,16 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero" class="hero-gradient relative overflow-hidden min-h-[100svh] flex items-center">
-    <!-- Decorative orbs -->
-    <div class="orb w-[500px] h-[500px] bg-brand-red/15 top-[-10%] right-[-10%]"></div>
-    <div class="orb w-[600px] h-[600px] bg-blue-500/10 bottom-[-15%] left-[-10%]"></div>
-    <div class="orb w-[300px] h-[300px] bg-white/5 top-[30%] left-[40%]"></div>
-    <!-- Grid pattern -->
-    <div class="absolute inset-0 opacity-[0.03]"><svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg></div>
+<section id="hero" class="relative overflow-hidden min-h-[100svh] flex items-center">
+    <!-- Background photo with overlay -->
+    <div class="absolute inset-0">
+        <img src="assets/fort-building.jpg" alt="" class="w-full h-full object-cover" loading="eager">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#001a3a]/92 via-[#002d66]/85 to-[#004c99]/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#001a3a]/60 via-transparent to-[#001a3a]/30"></div>
+    </div>
+    <!-- Subtle orbs over photo -->
+    <div class="orb w-[500px] h-[500px] bg-brand-red/10 top-[-10%] right-[-10%]"></div>
+    <div class="orb w-[400px] h-[400px] bg-blue-500/8 bottom-[-15%] left-[-10%]"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 md:py-0 w-full">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -276,7 +277,7 @@
             <div class="hidden lg:block hero-reveal" style="animation-delay:0.6s">
                 <div class="relative">
                     <div class="animate-float glass rounded-3xl p-4 shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=600&h=400&fit=crop&q=80" alt="Autoservis Fořt — moderní dílna" class="rounded-2xl w-full h-[340px] object-cover" loading="eager">
+                        <img src="assets/fort-workshop.jpg" alt="Autoservis Fořt — reálná dílna s ruční mytím a 3D geometrií" class="rounded-2xl w-full h-[340px] object-cover" loading="eager">
                     </div>
                     <!-- Floating stat badges -->
                     <div class="absolute -bottom-6 -left-6 glass rounded-2xl px-6 py-4 text-white shadow-2xl animate-float" style="animation-delay:1s">
@@ -444,6 +445,18 @@
     </div>
 </section>
 
+<!-- PHOTO STRIP — real workshop atmosphere -->
+<section class="relative h-64 md:h-80 overflow-hidden">
+    <img src="assets/fort-workshop.jpg" alt="Dílna Autoservisu Fořt" class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/70 via-transparent to-brand-red/50"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white">
+            <img src="assets/fort-logo.jpg" alt="Fořt" class="w-20 h-20 mx-auto rounded-2xl object-contain bg-white/95 shadow-2xl mb-4">
+            <p class="text-lg md:text-xl font-semibold text-white/90 drop-shadow-lg">Reálná dílna. Reální lidé. 36 let tradice.</p>
+        </div>
+    </div>
+</section>
+
 <div class="section-divider"></div>
 
 <!-- HISTORY / ABOUT -->
@@ -489,7 +502,7 @@
             </div>
             <div class="relative reveal-right">
                 <div class="bg-white rounded-3xl p-3 shadow-2xl shadow-black/10 overflow-hidden group">
-                    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=600&h=450&fit=crop&q=80" alt="Moderní autoservis" class="rounded-2xl w-full h-80 lg:h-[440px] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <img src="assets/fort-building.jpg" alt="Autoservis Fořt — areál v Litvínově-Janově" class="rounded-2xl w-full h-80 lg:h-[440px] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
                 </div>
                 <div class="absolute -bottom-6 -left-6 bg-brand-blue text-white rounded-2xl px-7 py-5 shadow-2xl shadow-blue-900/30">
                     <div class="text-sm font-medium text-blue-200">Google hodnocení</div>
@@ -699,37 +712,53 @@
             <p class="mt-5 text-lg text-blue-200/60">Přímá likvidace pojistných událostí — vyřídíme vše za vás</p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 max-w-4xl mx-auto stagger-children">
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:0">
-                <div class="text-2xl font-black text-green-400 mb-2 group-hover:scale-110 transition-transform">KOOPERATIVA</div>
-                <div class="text-white/60 font-medium text-sm">Kooperativa</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:0">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/kooperativa.svg" alt="Kooperativa" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Kooperativa</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:1">
-                <div class="text-2xl font-black text-orange-400 mb-2 group-hover:scale-110 transition-transform">ČPP</div>
-                <div class="text-white/60 font-medium text-sm">ČPP</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:1">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/cpp.svg" alt="ČPP" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">ČPP</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:2">
-                <div class="text-2xl font-black text-blue-400 mb-2 group-hover:scale-110 transition-transform">ČP</div>
-                <div class="text-white/60 font-medium text-sm">Česká pojišťovna</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:2">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/ceska-pojistovna.svg" alt="Česká pojišťovna" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Česká pojišťovna</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:3">
-                <div class="text-2xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform">GENERALI</div>
-                <div class="text-white/60 font-medium text-sm">Generali</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:3">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/generali.svg" alt="Generali" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Generali</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:4">
-                <div class="text-2xl font-black text-blue-300 mb-2 group-hover:scale-110 transition-transform">ALLIANZ</div>
-                <div class="text-white/60 font-medium text-sm">Allianz</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:4">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/allianz.svg" alt="Allianz" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Allianz</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:5">
-                <div class="text-2xl font-black text-teal-400 mb-2 group-hover:scale-110 transition-transform">SLAVIA</div>
-                <div class="text-white/60 font-medium text-sm">Slavia</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:5">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/slavia.svg" alt="Slavia" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Slavia</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:6">
-                <div class="text-2xl font-black text-red-300 mb-2 group-hover:scale-110 transition-transform">HASIČSKÁ</div>
-                <div class="text-white/60 font-medium text-sm">Hasičská poj.</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:6">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/hasicska.svg" alt="Hasičská vzájemná pojišťovna" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Hasičská vzáj. poj.</div>
             </div>
-            <div class="glass rounded-2xl p-6 md:p-7 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:7">
-                <div class="text-2xl font-black text-yellow-400 mb-2 group-hover:scale-110 transition-transform">DIRECT</div>
-                <div class="text-white/60 font-medium text-sm">Direct</div>
+            <div class="glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/15 transition-all duration-300 group reveal" style="--i:7">
+                <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="assets/logos/direct.svg" alt="Direct pojišťovna" class="w-10 h-10 object-contain">
+                </div>
+                <div class="text-white/80 font-semibold text-sm truncate">Direct</div>
             </div>
         </div>
     </div>
@@ -850,6 +879,7 @@
     <div class="bg-gradient-to-r from-brand-red to-brand-red-dark py-16 md:py-20">
         <div class="absolute inset-0 opacity-10"><svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="ctaDots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white"/></pattern></defs><rect width="100%" height="100%" fill="url(#ctaDots)"/></svg></div>
         <div class="relative max-w-4xl mx-auto px-4 text-center">
+            <img src="assets/fort-logo.jpg" alt="Fořt logo" class="w-16 h-16 mx-auto mb-6 rounded-2xl object-contain bg-white/95 shadow-lg shadow-red-900/20">
             <h2 class="text-3xl md:text-5xl font-black text-white mb-5">Potřebujete poradit?</h2>
             <p class="text-red-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto">Zavolejte nám a rádi vám pomůžeme s čímkoli ohledně vašeho vozidla.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -871,7 +901,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-10 mb-12">
             <div>
-                <div class="text-xl font-extrabold mb-4"><span class="text-brand-blue">AUTOSERVIS</span><span class="text-brand-red ml-1">FOŘT</span></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="assets/fort-logo.jpg" alt="Fořt logo" class="w-12 h-12 rounded-lg object-contain bg-white">
+                    <div class="text-xl font-extrabold"><span class="text-brand-blue">AUTOSERVIS</span><span class="text-brand-red ml-1">FOŘT</span></div>
+                </div>
                 <p class="text-sm text-gray-500 leading-relaxed max-w-xs">Spolehlivý autoservis v Litvínově-Janově. Od roku 1990 se staráme o vaše vozidla s profesionální péčí.</p>
             </div>
             <div>
