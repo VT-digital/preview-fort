@@ -13,6 +13,9 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="cs_CZ">
     <meta property="og:site_name" content="Autoservis Fořt">
+    <meta property="og:url" content="https://www.autoservis-fort.cz/">
+    <meta property="og:image" content="https://www.autoservis-fort.cz/assets/fort-building.jpg">
+    <link rel="canonical" href="https://www.autoservis-fort.cz/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
     <script type="application/ld+json">
     {
@@ -24,12 +27,12 @@
             "@type": "PostalAddress",
             "streetAddress": "Podkrušnohorská 7",
             "addressLocality": "Litvínov-Janov",
-            "postalCode": "436 01",
+            "postalCode": "435 42",
             "addressCountry": "CZ"
         },
-        "telephone": "+420476110444",
+        "telephone": "+420476741008",
         "email": "info@autoservis-fort.cz",
-        "openingHours": "Mo-Fr 07:00-16:30",
+        "openingHours": ["Mo-Fr 07:00-17:00"],
         "foundingDate": "1990",
         "areaServed": "Litvínov",
         "priceRange": "$$",
@@ -51,7 +54,7 @@
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
@@ -138,7 +141,8 @@
         .price-row:hover { background: rgba(0,76,153,.04); transform: translateX(4px); }
 
         /* Smooth scroll padding for nav */
-        html { scroll-padding-top: 90px; }
+        html { scroll-padding-top: 130px; }
+        #preview-banner ~ nav { top: 36px !important; }
 
         /* Stat counter animation */
         .stat-number { font-variant-numeric: tabular-nums; }
@@ -167,12 +171,26 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .marquee-track { animation: marquee 30s linear infinite; }
         .marquee-track:hover { animation-play-state: paused; }
+
+        /* Copy protection */
+        body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+        a img, a, button, input, textarea, select, label { pointer-events: auto; }
+        input, textarea { -webkit-user-select: text; -moz-user-select: text; user-select: text; }
     </style>
 </head>
 <body class="font-sans text-gray-900 bg-white antialiased overflow-x-hidden" x-data="{ mobileMenu: false, scrolled: false }" @scroll.window="scrolled = (window.scrollY > 20)">
 
+<!-- PREVIEW BANNER -->
+<div class="fixed top-0 left-0 right-0 z-[70] bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-amber-950 text-center py-2 px-4 text-sm font-semibold shadow-lg" id="preview-banner">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        <span>PREVIEW VERZE — Toto je ukázka webu. Vytvořil <a href="https://vt-digital.cz" target="_blank" rel="noopener" class="underline font-black hover:text-amber-800 transition-colors">Vojtěch Titlbach — VT-DIGITAL.CZ</a></span>
+    </div>
+</div>
+
 <!-- SCROLL PROGRESS -->
-<div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-brand-blue to-brand-red z-[60]"></div>
+<div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-brand-blue to-brand-red z-[60]" style="top:36px"></div>
 
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" :class="scrolled ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-gray-100' : 'bg-transparent'">
@@ -192,12 +210,12 @@
                 <a href="#cenik" class="nav-link px-4 py-2 text-sm font-medium rounded-lg transition-colors" :class="scrolled ? 'text-gray-600 hover:text-brand-blue hover:bg-gray-50' : 'text-white/80 hover:text-white hover:bg-white/10'">Ceník</a>
                 <a href="#faq" class="nav-link px-4 py-2 text-sm font-medium rounded-lg transition-colors" :class="scrolled ? 'text-gray-600 hover:text-brand-blue hover:bg-gray-50' : 'text-white/80 hover:text-white hover:bg-white/10'">FAQ</a>
                 <a href="#kontakt" class="nav-link px-4 py-2 text-sm font-medium rounded-lg transition-colors" :class="scrolled ? 'text-gray-600 hover:text-brand-blue hover:bg-gray-50' : 'text-white/80 hover:text-white hover:bg-white/10'">Kontakt</a>
-                <a href="tel:+420476110444" class="ml-4 inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5 active:translate-y-0">
+                <a href="tel:+420476741008" class="ml-4 inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5 active:translate-y-0">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    476 110 444
+                    476 741 008
                 </a>
             </div>
-            <button @click="mobileMenu = !mobileMenu" class="lg:hidden p-2.5 rounded-xl transition-colors" :class="scrolled ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/10 text-white'">
+            <button @click="mobileMenu = !mobileMenu" aria-label="Otevřít menu" class="lg:hidden p-2.5 rounded-xl transition-colors" :class="scrolled ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/10 text-white'">
                 <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 <svg x-show="mobileMenu" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
@@ -229,9 +247,9 @@
                 <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>Kontakt
             </a>
             <div class="pt-3">
-                <a href="tel:+420476110444" class="flex items-center justify-center gap-2.5 bg-brand-red text-white font-bold py-4 rounded-xl shadow-lg shadow-red-200 active:scale-[0.98] transition-transform">
+                <a href="tel:+420476741008" class="flex items-center justify-center gap-2.5 bg-brand-red text-white font-bold py-4 rounded-xl shadow-lg shadow-red-200 active:scale-[0.98] transition-transform">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    Zavolat: 476 110 444
+                    Zavolat: 476 741 008
                 </a>
             </div>
         </div>
@@ -242,7 +260,7 @@
 <section id="hero" class="relative overflow-hidden min-h-[100svh] flex items-center">
     <!-- Background photo with overlay -->
     <div class="absolute inset-0">
-        <img src="assets/fort-building.jpg" alt="" class="w-full h-full object-cover" loading="eager">
+        <img src="assets/fort-building.jpg" alt="Budova Autoservisu Fořt v Litvínově-Janově" class="w-full h-full object-cover" loading="eager">
         <div class="absolute inset-0 bg-gradient-to-r from-[#001a3a]/95 via-[#002d66]/90 to-[#004c99]/82"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#001a3a]/70 via-[#001a3a]/20 to-[#001a3a]/40"></div>
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,26,58,0.5)_0%,transparent_70%)]"></div>
@@ -256,7 +274,7 @@
             <div class="text-center lg:text-left">
                 <div class="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-reveal" style="animation-delay:0.2s">
                     <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span></span>
-                    <span class="text-white/90 text-sm font-medium">36 let spolehlivého servisu</span>
+                    <span class="text-white/90 text-sm font-medium"><span class="years-dynamic">36</span> let spolehlivého servisu</span>
                 </div>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight hero-reveal" style="animation-delay:0.4s;text-shadow:0 2px 12px rgba(0,0,0,0.5),0 0 40px rgba(0,26,58,0.4)">
                     Váš spolehlivý<br><span class="gradient-text" style="-webkit-text-fill-color:transparent;background:linear-gradient(135deg,#ff3b43,#d71e26,#ff6b6b);-webkit-background-clip:text;background-clip:text;">autoservis</span><br>od roku 1990
@@ -286,13 +304,13 @@
                         </div>
                         <div class="mt-4 text-center">
                             <div class="text-white font-black text-xl tracking-wide">AUTOSERVIS</div>
-                            <div class="text-white/50 text-sm font-medium tracking-[0.2em] mt-1">LITVINOV-JANOV</div>
+                            <div class="text-white/50 text-sm font-medium tracking-[0.2em] mt-1">LITVÍNOV-JANOV</div>
                         </div>
                     </div>
                     <!-- Floating stat badges -->
                     <div class="absolute -bottom-8 -left-8 glass rounded-2xl px-6 py-4 text-white shadow-2xl animate-float" style="animation-delay:1s">
                         <div class="text-3xl font-black stat-number" data-target="36">0</div>
-                        <div class="text-sm text-white/60 font-medium">let zkusenosti</div>
+                        <div class="text-sm text-white/60 font-medium">let zkušeností</div>
                     </div>
                     <div class="absolute -top-6 -right-6 glass rounded-2xl px-6 py-4 text-white shadow-2xl animate-float" style="animation-delay:2s">
                         <div class="text-3xl font-black">9</div>
@@ -462,7 +480,7 @@
     <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white">
             <img src="assets/fort-logo.jpg" alt="Fořt" class="w-20 h-20 mx-auto rounded-2xl object-contain bg-white/95 shadow-2xl mb-4">
-            <p class="text-lg md:text-xl font-semibold text-white/90 drop-shadow-lg">Reálná dílna. Reální lidé. 36 let tradice.</p>
+            <p class="text-lg md:text-xl font-semibold text-white/90 drop-shadow-lg">Reálná dílna. Reální lidé. <span class="years-dynamic">36</span> let tradice.</p>
         </div>
     </div>
 </section>
@@ -504,7 +522,7 @@
                     <div class="flex gap-5 group">
                         <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-red rounded-2xl flex items-center justify-center text-white font-black text-sm shadow-lg relative z-10 group-hover:scale-110 transition-transform">Dnes</div>
                         <div>
-                            <h3 class="font-bold text-gray-900 text-lg">9 oddělení, 36+ let tradice</h3>
+                            <h3 class="font-bold text-gray-900 text-lg">9 oddělení, <span class="years-dynamic">36</span>+ let tradice</h3>
                             <p class="text-gray-500 mt-1 leading-relaxed">Dnes provozujeme 9 specializovaných oddělení — od autoservisu a karosárny přes pneuservis až po ruční mytí. Jsme smluvním partnerem 8 pojišťoven.</p>
                         </div>
                     </div>
@@ -526,7 +544,7 @@
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" opacity="0.4"/></svg>
                         </div>
                     </div>
-                    <div class="text-sm text-blue-200/70 mt-0.5">185 hodnocení</div>
+                    <div class="text-sm text-blue-200/70 mt-0.5">149 hodnocení</div>
                 </div>
             </div>
         </div>
@@ -553,7 +571,11 @@
                 <span class="text-2xl font-black text-gray-900">4.5</span>
                 <span class="text-gray-400 text-lg">/ 5</span>
             </div>
-            <p class="text-gray-500 mt-2">185 hodnocení na Google</p>
+            <p class="text-gray-500 mt-2">149 hodnocení na Google</p>
+            <a href="https://www.google.com/search?tbm=lcl&kgmid=/g/1tf7wfdg&q=Autoservis+Fo%C5%99t" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 bg-white border border-gray-200 text-gray-700 font-semibold text-sm px-5 py-2.5 rounded-xl hover:border-brand-blue/30 hover:shadow-md transition-all">
+                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                Zobrazit všechny recenze na Google
+            </a>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children">
             <div class="review-card bg-white border border-gray-100 rounded-3xl p-7 reveal" style="--i:0">
@@ -564,10 +586,10 @@
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Profesionální přístup od začátku do konce. Auto bylo opravené rychle a za férovou cenu. Jednoznačně doporučuji každému v okolí."</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Po několikerém využití služeb autoservisu zbývá sdílet skutečně upřímné hodnocení firmy. Svůj vůz můžete svěřit těmto přátelským profesionálům bez obav."</p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
                     <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand-red/20 to-brand-red/10 flex items-center justify-center text-brand-red font-bold">M</div>
-                    <div><div class="font-semibold text-sm text-gray-900">Martin K.</div><div class="text-xs text-gray-400">před 2 měsíci</div></div>
+                    <div><div class="font-semibold text-sm text-gray-900">Martin Janků</div><div class="text-xs text-gray-400">Google recenze</div></div>
                 </div>
             </div>
             <div class="review-card bg-white border border-gray-100 rounded-3xl p-7 reveal" style="--i:1">
@@ -578,10 +600,10 @@
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Rychlá oprava karoserie po nehodě. Vyřídili pojistnou událost kompletně za mě, nemusel jsem řešit vůbec nic. Výsledek perfektní, jako nové."</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Přivezl jsem Mitsubishi Outlander na odtahovce a druhý den jsem odjížděl po svých. Příjem vozu bez zdráhání, skvělá komunikace, rychlá profesionální práce, ukázka poškozených součástek, faktura, předání vozidla. Perfektní."</p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
                     <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand-blue/20 to-brand-blue/10 flex items-center justify-center text-brand-blue font-bold">P</div>
-                    <div><div class="font-semibold text-sm text-gray-900">Petra S.</div><div class="text-xs text-gray-400">před 1 měsícem</div></div>
+                    <div><div class="font-semibold text-sm text-gray-900">Petr H.</div><div class="text-xs text-gray-400">Google recenze</div></div>
                 </div>
             </div>
             <div class="review-card bg-white border border-gray-100 rounded-3xl p-7 reveal" style="--i:2">
@@ -592,10 +614,10 @@
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Přezutí bez čekání! Přišel jsem bez objednání a během hodiny bylo hotovo. Cena férová, přístup skvělý. Pneuservis u Fořta je moje jediná volba."</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Spolehlivý autoservis, kam jezdím už roky. Vždy férové jednání, solidní práce a rozumné ceny. Opravy zvládnou rychle a kvalitně. Doporučuji všem v okolí Litvínova."</p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
                     <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center text-emerald-600 font-bold">J</div>
-                    <div><div class="font-semibold text-sm text-gray-900">Jaroslav N.</div><div class="text-xs text-gray-400">před 3 týdny</div></div>
+                    <div><div class="font-semibold text-sm text-gray-900">Jaroslav N.</div><div class="text-xs text-gray-400">Google recenze</div></div>
                 </div>
             </div>
             <div class="review-card bg-white border border-gray-100 rounded-3xl p-7 reveal" style="--i:3">
@@ -606,10 +628,10 @@
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" opacity="0.4"/></svg>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Jezdím sem už 10 let. Vždy fér jednání, solidní práce a rozumné ceny. Když potřebuji cokoliv s autem, volám rovnou Fořta."</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">"Karosárna na jedničku. Po nehodě vyřídili pojistnou událost kompletně za mě, nemusel jsem řešit vůbec nic. Výsledek perfektní, auto vypadá jako nové. Díky!"</p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
                     <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center text-amber-600 font-bold">L</div>
-                    <div><div class="font-semibold text-sm text-gray-900">Lukáš D.</div><div class="text-xs text-gray-400">před 1 měsícem</div></div>
+                    <div><div class="font-semibold text-sm text-gray-900">Lukáš D.</div><div class="text-xs text-gray-400">Google recenze</div></div>
                 </div>
             </div>
         </div>
@@ -791,7 +813,7 @@
                     <svg class="w-5 h-5 text-gray-400 shrink-0 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="accordion-content">
-                    <div class="px-7 pb-5 text-gray-500 leading-relaxed">Pro většinu služeb doporučujeme objednat se předem telefonicky na <a href="tel:+420476110444" class="text-brand-blue font-semibold hover:underline">476 110 444</a>, abychom vám zajistili termín bez čekání. Pro některé služby (např. pneuservis v sezóně) je objednání nutné.</div>
+                    <div class="px-7 pb-5 text-gray-500 leading-relaxed">Pro většinu služeb doporučujeme objednat se předem telefonicky na <a href="tel:+420476741008" class="text-brand-blue font-semibold hover:underline">476 741 008</a>, abychom vám zajistili termín bez čekání. Pro některé služby (např. pneuservis v sezóně) je objednání nutné.</div>
                 </div>
             </div>
             <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden transition-shadow" :class="open === 2 ? 'shadow-lg shadow-brand-blue/5 border-brand-blue/20 accordion-open' : 'hover:shadow-md'">
@@ -818,12 +840,12 @@
                     <svg class="w-5 h-5 text-gray-400 shrink-0 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="accordion-content">
-                    <div class="px-7 pb-5 text-gray-500 leading-relaxed">Jsme tu pro vás pondělí až pátek od 7:00 do 16:30. O víkendech a svátcích máme zavřeno.</div>
+                    <div class="px-7 pb-5 text-gray-500 leading-relaxed">Jsme tu pro vás pondělí až pátek od 7:00 do 17:00. O víkendech a svátcích máme zavřeno.</div>
                 </div>
             </div>
             <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden transition-shadow" :class="open === 5 ? 'shadow-lg shadow-brand-blue/5 border-brand-blue/20 accordion-open' : 'hover:shadow-md'">
                 <button @click="open = open === 5 ? null : 5" class="w-full flex items-center justify-between px-7 py-5 text-left">
-                    <span class="font-semibold text-gray-900 pr-4">Servírujete všechny značky?</span>
+                    <span class="font-semibold text-gray-900 pr-4">Servisujete všechny značky?</span>
                     <svg class="w-5 h-5 text-gray-400 shrink-0 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="accordion-content">
@@ -851,7 +873,8 @@
                     <svg class="w-8 h-8 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 </div>
                 <h3 class="font-bold text-gray-900 text-xl mb-5">Telefon</h3>
-                <a href="tel:+420476110444" class="text-2xl font-black text-brand-blue hover:text-brand-red transition-colors">476 110 444</a>
+                <a href="tel:+420476741008" class="text-2xl font-black text-brand-blue hover:text-brand-red transition-colors block">476 741 008</a>
+                <a href="tel:+420603973687" class="text-lg font-semibold text-gray-500 hover:text-brand-red transition-colors block mt-2">603 973 687</a>
             </div>
             <div class="reveal bg-gradient-to-br from-brand-gray-light to-white rounded-3xl p-8 md:p-10 text-center border border-gray-100 hover:shadow-xl hover:border-brand-blue/20 transition-all duration-300 group" style="--i:1">
                 <div class="w-16 h-16 bg-brand-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-blue/20 transition-all duration-300">
@@ -859,7 +882,7 @@
                 </div>
                 <h3 class="font-bold text-gray-900 text-xl mb-5">E-mail & Adresa</h3>
                 <a href="mailto:info@autoservis-fort.cz" class="text-lg font-semibold text-brand-blue hover:text-brand-red transition-colors block mb-4">info@autoservis-fort.cz</a>
-                <div class="text-gray-500"><p class="font-semibold text-gray-700">Podkrušnohorská 7</p><p>Litvínov-Janov, 436 01</p></div>
+                <div class="text-gray-500"><p class="font-semibold text-gray-700">Podkrušnohorská 7</p><p>Litvínov-Janov, 435 42</p></div>
             </div>
             <div class="reveal bg-gradient-to-br from-brand-gray-light to-white rounded-3xl p-8 md:p-10 text-center border border-gray-100 hover:shadow-xl hover:border-green-400/20 transition-all duration-300 group" style="--i:2">
                 <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-green-200 transition-all duration-300">
@@ -869,7 +892,7 @@
                 <div class="space-y-3">
                     <div class="flex justify-between items-center px-4 py-2 rounded-xl bg-white">
                         <span class="font-medium text-gray-600">Pondělí – Pátek</span>
-                        <span class="font-bold text-gray-900">7:00 – 16:30</span>
+                        <span class="font-bold text-gray-900">7:00 – 17:00</span>
                     </div>
                     <div class="flex justify-between items-center px-4 py-2 rounded-xl bg-white">
                         <span class="font-medium text-gray-600">Sobota – Neděle</span>
@@ -878,8 +901,46 @@
                 </div>
             </div>
         </div>
+        <!-- Kontaktní formulář -->
+        <div class="mb-12 reveal">
+            <div class="bg-gradient-to-br from-brand-gray-light to-white rounded-3xl border border-gray-100 p-8 md:p-12 max-w-3xl mx-auto">
+                <h3 class="text-2xl md:text-3xl font-black text-gray-900 mb-2 text-center">Napište nám</h3>
+                <p class="text-gray-500 text-center mb-8">Odpovíme vám co nejdříve, obvykle do 24 hodin.</p>
+                <form action="https://formsubmit.co/info@autoservis-fort.cz" method="POST" class="space-y-5">
+                    <input type="hidden" name="_subject" value="Nová zpráva z webu Autoservis Fořt">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Jméno a příjmení</label>
+                            <input type="text" id="name" name="name" required placeholder="Jan Novák" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all text-gray-900 placeholder:text-gray-400">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">E-mail</label>
+                            <input type="email" id="email" name="email" required placeholder="jan@email.cz" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all text-gray-900 placeholder:text-gray-400">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Telefon <span class="text-gray-400 font-normal">(nepovinné)</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+420 123 456 789" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all text-gray-900 placeholder:text-gray-400">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Zpráva</label>
+                        <textarea id="message" name="message" required rows="4" placeholder="Popište, s čím vám můžeme pomoci..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all text-gray-900 placeholder:text-gray-400 resize-y"></textarea>
+                    </div>
+                    <div class="text-center pt-2">
+                        <button type="submit" class="inline-flex items-center justify-center gap-2.5 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-lg px-10 py-4 rounded-2xl transition-all shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5 active:translate-y-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            Odeslat zprávu
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="bg-gray-200 rounded-3xl overflow-hidden h-64 md:h-[420px] shadow-2xl reveal">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2538.8!2d13.61!3d50.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDM2JzAwLjAiTiAxM8KwMzYnMzYuMCJF!5e0!3m2!1scs!2scz!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full"></iframe>
+            <iframe src="https://maps.google.com/maps?q=50.5868,13.5637&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full" title="Mapa — Autoservis Fořt, Podkrušnohorská 7, Litvínov-Janov"></iframe>
         </div>
     </div>
 </section>
@@ -893,9 +954,9 @@
             <h2 class="text-3xl md:text-5xl font-black text-white mb-5">Potřebujete poradit?</h2>
             <p class="text-red-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto">Zavolejte nám a rádi vám pomůžeme s čímkoli ohledně vašeho vozidla.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+420476110444" class="group inline-flex items-center justify-center gap-2.5 bg-white text-brand-red font-bold text-lg px-8 py-4 rounded-2xl hover:bg-gray-50 transition-all shadow-2xl hover:-translate-y-1 active:translate-y-0">
+                <a href="tel:+420476741008" class="group inline-flex items-center justify-center gap-2.5 bg-white text-brand-red font-bold text-lg px-8 py-4 rounded-2xl hover:bg-gray-50 transition-all shadow-2xl hover:-translate-y-1 active:translate-y-0">
                     <svg class="w-5 h-5 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    476 110 444
+                    476 741 008
                 </a>
                 <a href="mailto:info@autoservis-fort.cz" class="inline-flex items-center justify-center gap-2.5 bg-white/10 border-2 border-white/30 text-white font-bold text-lg px-8 py-4 rounded-2xl hover:bg-white/20 transition-all hover:-translate-y-0.5">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -915,7 +976,12 @@
                     <img src="assets/fort-logo.jpg" alt="Fořt logo" class="w-12 h-12 rounded-lg object-contain bg-white">
                     <div class="text-xl font-extrabold"><span class="text-brand-blue">AUTOSERVIS</span><span class="text-brand-red ml-1">FOŘT</span></div>
                 </div>
-                <p class="text-sm text-gray-500 leading-relaxed max-w-xs">Spolehlivý autoservis v Litvínově-Janově. Od roku 1990 se staráme o vaše vozidla s profesionální péčí.</p>
+                <p class="text-sm text-gray-500 leading-relaxed max-w-xs mb-4">Spolehlivý autoservis v Litvínově-Janově. Od roku 1990 se staráme o vaše vozidla s profesionální péčí.</p>
+                <div class="flex items-center gap-3">
+                    <a href="https://www.facebook.com/servisFORT/" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-colors" aria-label="Facebook">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
             </div>
             <div>
                 <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Služby</h4>
@@ -935,14 +1001,22 @@
                 <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Kontakt</h4>
                 <div class="space-y-3 text-sm">
                     <p>Podkrušnohorská 7, Litvínov-Janov</p>
-                    <p>Tel: <a href="tel:+420476110444" class="text-blue-400 hover:text-white transition-colors font-medium">476 110 444</a></p>
+                    <p>Tel: <a href="tel:+420476741008" class="text-blue-400 hover:text-white transition-colors font-medium">476 741 008</a></p>
+                    <p>Mobil: <a href="tel:+420603973687" class="text-blue-400 hover:text-white transition-colors font-medium">603 973 687</a></p>
                     <p>E-mail: <a href="mailto:info@autoservis-fort.cz" class="text-blue-400 hover:text-white transition-colors font-medium">info@autoservis-fort.cz</a></p>
-                    <p>Po–Pá: 7:00 – 16:30</p>
+                    <p>IČO: 43183832</p>
+                    <p>Po–Pá: 7:00 – 17:00</p>
                 </div>
             </div>
         </div>
-        <div class="border-t border-gray-800/50 pt-8 text-center text-sm text-gray-600">
-            <p>&copy; 2026 Autoservis Fořt s.r.o. Všechna práva vyhrazena.</p>
+        <div class="border-t border-gray-800/50 pt-8 text-sm text-gray-600">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p>&copy; 2026 Autoservis Fořt — Vladimír Fořt, IČO 43183832. Všechna práva vyhrazena.</p>
+                <a href="https://vt-digital.cz" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors group">
+                    <span class="text-xs">Weby na míru</span>
+                    <span class="font-bold text-sm group-hover:text-brand-red transition-colors">VT-DIGITAL.CZ</span>
+                </a>
+            </div>
         </div>
     </div>
 </footer>
@@ -1022,6 +1096,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
 
+    // Dynamic years calculation
+    const yearsInBusiness = new Date().getFullYear() - 1990;
+    document.querySelectorAll('[data-target="36"]').forEach(el => { el.dataset.target = yearsInBusiness; });
+    document.querySelectorAll('.years-dynamic').forEach(el => { el.textContent = yearsInBusiness; });
+
     // Smooth nav active state
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -1036,6 +1115,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { passive: true });
 });
+
+// === COPY PROTECTION ===
+// Disable right-click context menu
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable text selection
+document.addEventListener('selectstart', e => e.preventDefault());
+
+// Block keyboard shortcuts (Ctrl+U, Ctrl+S, Ctrl+C, Ctrl+Shift+I/J/C, F12)
+document.addEventListener('keydown', e => {
+    if (e.key === 'F12') { e.preventDefault(); return; }
+    if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); return; }
+    if (e.ctrlKey && ['u','U','s','S'].includes(e.key)) { e.preventDefault(); return; }
+    if (e.metaKey && e.altKey && ['i','I','j','J','c','C'].includes(e.key)) { e.preventDefault(); return; }
+    if (e.metaKey && ['u','U','s','S'].includes(e.key)) { e.preventDefault(); return; }
+});
+
+// Disable drag on images
+document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+
+// Console warning
+console.log('%c⚠️ POZOR', 'color:#d71e26;font-size:40px;font-weight:900;');
+console.log('%cTento web je chráněn autorským právem. Kopírování nebo replikace je zakázáno.', 'color:#004c99;font-size:16px;');
+console.log('%c© Vojtěch Titlbach — VT-DIGITAL.CZ', 'color:#666;font-size:14px;');
 </script>
 </body>
 </html>

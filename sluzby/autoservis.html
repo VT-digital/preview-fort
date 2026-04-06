@@ -6,8 +6,16 @@
     <title>Autoservis — Autoservis Fořt | Litvínov-Janov</title>
     <meta name="description" content="Kompletní mechanické opravy a servis osobních i užitkových vozidel. Diagnostika, výměna olejů, brzdy, rozvodové řemeny. Autoservis Fořt Litvínov.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Autoservis — Autoservis Fořt | Litvínov-Janov">
+    <meta property="og:description" content="Kompletní mechanické opravy a servis osobních i užitkových vozidel. Autoservis Fořt Litvínov.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:site_name" content="Autoservis Fořt">
+    <meta property="og:image" content="https://www.autoservis-fort.cz/assets/fort-building.jpg">
+    <link rel="canonical" href="https://www.autoservis-fort.cz/sluzby/autoservis.html">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -38,7 +46,8 @@
             background-size: 300% 300%;
             animation: gradient-shift 8s ease infinite;
         }
-        html { scroll-padding-top: 90px; }
+        html { scroll-padding-top: 130px; }
+        #preview-banner ~ nav { top: 36px !important; }
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-scale { opacity: 0; transform: scale(0.95); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
@@ -55,21 +64,25 @@
         .accordion-open .accordion-content { max-height: 500px; }
         .accordion-icon { transition: transform 0.3s; }
         .accordion-open .accordion-icon { transform: rotate(180deg); }
+
+        /* Copy protection */
+        body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+        a img, a, button, input, textarea, select, label { pointer-events: auto; }
+        input, textarea { -webkit-user-select: text; -moz-user-select: text; user-select: text; }
     </style>
 </head>
 <body class="font-sans text-gray-900 bg-white antialiased overflow-x-hidden" x-data="{ mobileMenu: false, scrolled: false }" @scroll.window="scrolled = (window.scrollY > 20)">
 
 <!-- SCROLL PROGRESS -->
-<div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-brand-blue to-brand-red z-[60]"></div>
+<div id="scroll-progress" style="top:36px" class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-brand-blue to-brand-red z-[60]"></div>
 
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" :class="scrolled ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-gray-100' : 'bg-transparent'">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 md:h-20">
             <a href="../index.html" class="flex items-center gap-3 shrink-0 group">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" :class="scrolled ? 'bg-brand-blue shadow-lg shadow-blue-200' : 'bg-white/15 backdrop-blur-sm border border-white/20'">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
+                <img src="../assets/fort-logo.jpg" alt="Fořt logo" class="w-10 h-10 rounded-xl object-contain transition-all duration-300 group-hover:scale-110" :class="scrolled ? 'shadow-lg shadow-blue-200 bg-white' : 'bg-white/90'">
                 <div>
                     <div class="text-lg font-extrabold tracking-tight transition-colors" :class="scrolled ? '' : 'text-white'"><span :class="scrolled ? 'text-brand-blue' : 'text-white'">AUTOSERVIS</span> <span class="text-brand-red">FOŘT</span></div>
                     <div class="text-[10px] font-medium tracking-widest uppercase -mt-0.5 transition-colors" :class="scrolled ? 'text-gray-400' : 'text-white/60'">Litvínov-Janov</div>
@@ -81,12 +94,12 @@
                 </a>
                 <a href="../index.html#sluzby" class="px-4 py-2 text-sm font-medium rounded-lg transition-colors" :class="scrolled ? 'text-gray-600 hover:text-brand-blue hover:bg-gray-50' : 'text-white/80 hover:text-white hover:bg-white/10'">Služby</a>
                 <a href="../index.html#kontakt" class="px-4 py-2 text-sm font-medium rounded-lg transition-colors" :class="scrolled ? 'text-gray-600 hover:text-brand-blue hover:bg-gray-50' : 'text-white/80 hover:text-white hover:bg-white/10'">Kontakt</a>
-                <a href="tel:+420476110444" class="ml-4 inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5">
+                <a href="tel:+420476741008" class="ml-4 inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    476 110 444
+                    476 741 008
                 </a>
             </div>
-            <button @click="mobileMenu = !mobileMenu" class="lg:hidden p-2.5 rounded-xl transition-colors" :class="scrolled ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/10 text-white'">
+            <button @click="mobileMenu = !mobileMenu" aria-label="Otevřít menu" class="lg:hidden p-2.5 rounded-xl transition-colors" :class="scrolled ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/10 text-white'">
                 <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 <svg x-show="mobileMenu" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
@@ -108,9 +121,9 @@
             <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>Služby
         </a>
         <div class="pt-2">
-            <a href="tel:+420476110444" class="flex items-center justify-center gap-2.5 bg-brand-red text-white font-bold py-4 rounded-xl shadow-lg">
+            <a href="tel:+420476741008" class="flex items-center justify-center gap-2.5 bg-brand-red text-white font-bold py-4 rounded-xl shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                Zavolat: 476 110 444
+                Zavolat: 476 741 008
             </a>
         </div>
     </div>
@@ -148,10 +161,10 @@
                         </div>
                         <div>
                             <div class="text-white/60 text-xs font-medium">Objednat se</div>
-                            <a href="tel:+420476110444" class="text-white font-bold text-lg hover:text-brand-red transition-colors">476 110 444</a>
+                            <a href="tel:+420476741008" class="text-white font-bold text-lg hover:text-brand-red transition-colors">476 741 008</a>
                         </div>
                     </div>
-                    <div class="text-white/40 text-xs">Po–Pá: 7:00 – 16:30</div>
+                    <div class="text-white/40 text-xs">Po–Pá: 7:00 – 17:00</div>
                 </div>
             </div>
         </div>
@@ -264,9 +277,9 @@
                 <div class="relative">
                     <h2 class="text-2xl md:text-4xl font-black text-white mb-4">Potřebujete opravit auto?</h2>
                     <p class="text-red-100 mb-8 max-w-xl mx-auto text-lg">Zavolejte nám a domluvte si termín. Poradíme vám s jakýmkoliv problémem vašeho vozidla.</p>
-                    <a href="tel:+420476110444" class="group inline-flex items-center gap-2.5 bg-white text-brand-red font-bold text-lg px-8 py-4 rounded-2xl hover:bg-gray-50 transition-all shadow-2xl hover:-translate-y-1 active:translate-y-0">
+                    <a href="tel:+420476741008" class="group inline-flex items-center gap-2.5 bg-white text-brand-red font-bold text-lg px-8 py-4 rounded-2xl hover:bg-gray-50 transition-all shadow-2xl hover:-translate-y-1 active:translate-y-0">
                         <svg class="w-5 h-5 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        476 110 444
+                        476 741 008
                     </a>
                 </div>
             </div>
@@ -274,36 +287,109 @@
     </div>
 </section>
 
+<!-- DALŠÍ SLUŽBY -->
+<section class="py-16 bg-brand-gray-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-black text-gray-900 text-center mb-10">Další služby</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <a href="karosarna.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-brand-blue/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-brand-blue transition-colors">Karosárna</div>
+            </a>
+            <a href="pneuservis.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-brand-red/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-brand-red/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke-width="2"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-brand-red transition-colors">Pneuservis</div>
+            </a>
+            <a href="stk-emise.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-brand-blue/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-brand-blue transition-colors">STK a emise</div>
+            </a>
+            <a href="klimatizace.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-sky-600/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-sky-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-sky-600 transition-colors">Klimatizace</div>
+            </a>
+            <a href="geometrie.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-emerald-600/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21l3-3m0 0l3 3m-3-3v-8m0 0L7 7m3 3l3-3m4 11h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2h2"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-emerald-600 transition-colors">Geometrie</div>
+            </a>
+            <a href="autopujcovna.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-amber-600/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-amber-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7h2a2 2 0 012 2v6a2 2 0 01-2 2h-2M9 7H7a2 2 0 00-2 2v6a2 2 0 002 2h2m6-10V5a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m0 0h6"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-amber-600 transition-colors">Autopůjčovna</div>
+            </a>
+            <a href="autosklo.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-violet-600/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-violet-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-violet-600 transition-colors">Autosklo</div>
+            </a>
+            <a href="rucni-myti.html" class="bg-white rounded-2xl p-5 text-center border border-gray-100 hover:border-cyan-600/30 hover:shadow-lg transition-all group">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-cyan-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m-4-9H3m18 0h-1M5.636 5.636l.707.707m11.314 11.314l.707.707M5.636 18.364l.707-.707m11.314-11.314l.707-.707"/></svg>
+                </div>
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-cyan-600 transition-colors">Ruční mytí</div>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="bg-gray-950 text-gray-400 pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-10 mb-12">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
             <div>
                 <div class="text-xl font-extrabold mb-4"><span class="text-brand-blue">AUTOSERVIS</span> <span class="text-brand-red">FOŘT</span></div>
                 <p class="text-sm text-gray-500 leading-relaxed">Kompletní autoservis a pneuservis v Litvínově-Janově.</p>
             </div>
             <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Služby</h4>
+                <div class="space-y-2 text-sm">
+                    <p><a href="autoservis.html" class="hover:text-white transition-colors">Autoservis</a></p>
+                    <p><a href="karosarna.html" class="hover:text-white transition-colors">Karosárna</a></p>
+                    <p><a href="pneuservis.html" class="hover:text-white transition-colors">Pneuservis</a></p>
+                    <p><a href="stk-emise.html" class="hover:text-white transition-colors">STK a emise</a></p>
+                    <p><a href="klimatizace.html" class="hover:text-white transition-colors">Klimatizace</a></p>
+                    <p><a href="geometrie.html" class="hover:text-white transition-colors">Geometrie</a></p>
+                    <p><a href="autopujcovna.html" class="hover:text-white transition-colors">Autopůjčovna</a></p>
+                    <p><a href="autosklo.html" class="hover:text-white transition-colors">Autosklo</a></p>
+                    <p><a href="rucni-myti.html" class="hover:text-white transition-colors">Ruční mytí</a></p>
+                </div>
+            </div>
+            <div>
                 <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Kontakt</h4>
                 <div class="space-y-2 text-sm">
-                    <p>Podkrušnohorská 7, Litvínov-Janov, 436 01</p>
-                    <p>Tel: <a href="tel:+420476110444" class="text-blue-400 hover:text-white transition-colors font-medium">476 110 444</a></p>
+                    <p>Podkrušnohorská 7, Litvínov-Janov, 435 42</p>
+                    <p>Tel: <a href="tel:+420476741008" class="text-blue-400 hover:text-white transition-colors font-medium">476 741 008</a></p>
                     <p>E-mail: <a href="mailto:info@autoservis-fort.cz" class="text-blue-400 hover:text-white transition-colors font-medium">info@autoservis-fort.cz</a></p>
                 </div>
             </div>
             <div>
                 <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Otevírací doba</h4>
                 <div class="space-y-2 text-sm">
-                    <p>Po-Pá: 7:00 – 16:30</p>
+                    <p>Po-Pá: 7:00 – 17:00</p>
                     <p>So-Ne: zavřeno</p>
                 </div>
             </div>
         </div>
-        <div class="border-t border-gray-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-gray-600">&copy; 2026 Autoservis Fořt. Všechna práva vyhrazena.</p>
-            <a href="../index.html" class="text-sm text-gray-500 hover:text-white transition-colors flex items-center gap-1.5">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                Zpět na hlavní stránku
-            </a>
+        <div class="border-t border-gray-800/50 pt-8 text-sm text-gray-600">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p>&copy; 2026 Autoservis Fořt — Vladimír Fořt, IČO 43183832. Všechna práva vyhrazena.</p>
+                <a href="https://vt-digital.cz" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors group">
+                    <span class="text-xs">Weby na míru</span>
+                    <span class="font-bold text-sm group-hover:text-brand-red transition-colors">VT-DIGITAL.CZ</span>
+                </a>
+            </div>
         </div>
     </div>
 </footer>
@@ -360,6 +446,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }, delay);
     });
 });
+
+// === COPY PROTECTION ===
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+    if (e.key === 'F12') { e.preventDefault(); return; }
+    if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); return; }
+    if (e.ctrlKey && ['u','U','s','S'].includes(e.key)) { e.preventDefault(); return; }
+    if (e.metaKey && e.altKey && ['i','I','j','J','c','C'].includes(e.key)) { e.preventDefault(); return; }
+    if (e.metaKey && ['u','U','s','S'].includes(e.key)) { e.preventDefault(); return; }
+});
+document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+console.log('%c⚠️ POZOR', 'color:#d71e26;font-size:40px;font-weight:900;');
+console.log('%cTento web je chráněn autorským právem. Kopírování nebo replikace je zakázáno.', 'color:#004c99;font-size:16px;');
+console.log('%c© Vojtěch Titlbach — VT-DIGITAL.CZ', 'color:#666;font-size:14px;');
 </script>
 </body>
 </html>
